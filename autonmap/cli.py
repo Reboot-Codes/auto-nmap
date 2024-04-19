@@ -21,13 +21,13 @@ def main():
             try:
                 with open(filename, "r") as file:
                     for line in file.read().splitlines():
-                        ips.append(line)
+                        ips.append(line.strip())
             except:
                 print(f"Error reading: {filename}, exiting...")
     else:
         for line in fileinput.input():
             line
-            ips.append(line)
+            ips.append(line.strip())
 
     for ipaddr in ips:
         os.system(f"nmap -sC -sV {ipaddr} -oN {ipaddr}.txt --unprivileged")
